@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { RegisterProvider } from './../../providers/register/register';
 
 @IonicPage()
@@ -16,7 +16,8 @@ export class RegisterPage {
   loading: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private reg: RegisterProvider, public loadingCtrl: LoadingController) {
+    private reg: RegisterProvider, public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController) {
 
   }
 
@@ -29,22 +30,36 @@ export class RegisterPage {
   }
 
   userSignup(){
-    this.showLoading();
-    this.reg.registerUser(this.fullname, this.email, this.password).subscribe(res => {
-      this.loading.dismiss();
+    if(this.fullname !== undefined || this.email !== undefined || this.password !== undefined){
+      this.showLoading();
+      this.reg.registerUser(this.fullname, this.email, this.password).subscribe(res => {
+        this.loading.dismiss();
 
-      if(res.user){
-        this.navCtrl.setRoot("HomePage");
-      }
+        if(res.user){
+          this.navCtrl.setRoot("HomePage");
+        }
 
-      if(res.error){
-        console.log(res.error);
-      }
-    });
+        if(res.error){
+          let alert = this.alertCtrl.create({
+            title: 'SignUp',
+            subTitle: res.error,
+            buttons:['OK']
+          });
+          alert.present();
+        }
+      });
 
-    this.fullname = '';
-    this.password = '';
-    this.email = '';
+      this.fullname = '';
+      this.password = '';
+      this.email = '';
+    }else {
+      let alert = this.alertCtrl.create({
+        title: 'SignUp',
+        subTitle: 'Cannot submit empty fields',
+        buttons:['OK']
+      });
+      alert.present();
+    }
   }
 
 
