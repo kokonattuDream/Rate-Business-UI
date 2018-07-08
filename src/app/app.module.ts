@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,6 +20,7 @@ import { RegisterProvider } from '../providers/register/register';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

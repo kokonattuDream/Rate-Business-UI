@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { RegisterProvider } from './../../providers/register/register';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,9 +16,14 @@ export class RegisterPage {
 
   loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private reg: RegisterProvider, public loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private reg: RegisterProvider, 
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private storage: Storage 
+  ) {
 
   }
 
@@ -36,6 +42,7 @@ export class RegisterPage {
         this.loading.dismiss();
 
         if(res.user){
+          this.storage.set('useremail', res.user.email);
           this.navCtrl.setRoot("HomePage");
         }
 
