@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -9,11 +10,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-    rootPage: string = "LoginPage";
+  rootPage: string;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private storage: Storage
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -29,6 +35,16 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.storage.get('useremail').then(loggedIn => {
+        if(loggedIn === null){
+          this.nav.setRoot("LoginPage");
+        }
+
+        if(loggedIn !== null){
+          this.nav.setRoot("HomePage");
+        }
+      })
     });
   }
 
