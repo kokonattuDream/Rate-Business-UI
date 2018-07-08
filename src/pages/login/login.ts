@@ -29,6 +29,7 @@ export class LoginPage {
   }
 
   login(){
+   
     if(this.email !== undefined || this.password !== undefined){
       this.showLoading();
       this.reg.loginUser(this.email, this.password).subscribe(res => {
@@ -40,7 +41,7 @@ export class LoginPage {
 
         if(res.error){
           let alert = this.alertCtrl.create({
-            title: 'Login',
+            title: 'Login Error',
             subTitle: res.error,
             buttons:['OK']
           });
@@ -50,9 +51,9 @@ export class LoginPage {
 
       this.password = '';
       this.email = '';
-    }else {
+    } else {
       let alert = this.alertCtrl.create({
-        title: 'Login',
+        title: 'Login Error',
         subTitle: 'Cannot submit empty fields',
         buttons:['OK']
       });
