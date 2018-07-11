@@ -22,8 +22,6 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
   }
 
-  openPage(){
-    this.navCtrl.setRoot("CreatecompanyPage");
-  }
+  
 
 }
