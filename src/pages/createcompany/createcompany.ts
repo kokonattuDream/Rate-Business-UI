@@ -35,9 +35,9 @@ export class CreatecompanyPage {
   ionViewDidLoad() {
     this.company.getUserData()
       .subscribe(res => {
-        console.log(res);
-        console.log(res.user);
-        this.userId = res.user._id;
+        if(res.user !== null){
+          this.userId = res.user._id;
+        }
       });
   }
 

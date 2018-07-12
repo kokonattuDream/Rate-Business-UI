@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 
 /*
   Generated class for the CompanyProvider provider.
@@ -14,8 +15,14 @@ export class CompanyProvider {
 
   email: any;
 
-  constructor(public http: HttpClient, private storage: Storage) {
-    console.log('Hello CompanyProvider Provider');
+  constructor(
+  public http: HttpClient,
+  private storage: Storage,
+  private platform: Platform) {
+
+    this.platform.ready().then(() => {
+      this.getEmail();
+    });
   }
 
   getUserData(): Observable<any>{
