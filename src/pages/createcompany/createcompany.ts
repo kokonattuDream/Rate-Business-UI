@@ -31,13 +31,16 @@ export class CreatecompanyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreatecompanyPage');
+    this.company.getUserData()
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
   register(){
     this.company.createCompany(this.name, this.address, this.city, this.country, this.sector, this.website, this.userId)
     .subscribe(res => {
-      
+      console.log(res);
     })
   }
 }
