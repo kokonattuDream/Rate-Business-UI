@@ -33,7 +33,7 @@ export class CreatecompanyPage {
   ionViewDidLoad() {
     this.company.getUserData()
       .subscribe(res => {
-        console.log(res);
+        this.userId = res.user._id;
       });
   }
 
