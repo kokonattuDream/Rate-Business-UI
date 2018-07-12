@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CompanyProvider } from '../../providers/company/company';
 
 /**
  * Generated class for the CreatecompanyPage page.
@@ -15,11 +16,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreatecompanyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  name: string;
+  address: string;
+  city: string;
+  country: string;
+  sector: string;
+  website: string;
+  userId: any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private company: CompanyProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatecompanyPage');
   }
 
+  register(){
+    this.company.createCompany(this.name, this.address, this.city, this.country, this.sector, this.website, this.userId)
+    .subscribe(res => {
+      
+    })
+  }
 }
