@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { CompanyProvider } from '../../providers/company/company';
 
 /**
@@ -27,12 +27,16 @@ export class CreatecompanyPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private company: CompanyProvider) {
+    private company: CompanyProvider,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     this.company.getUserData()
       .subscribe(res => {
+        console.log(res);
+        console.log(res.user);
         this.userId = res.user._id;
       });
   }
@@ -40,7 +44,30 @@ export class CreatecompanyPage {
   register(){
     this.company.createCompany(this.name, this.address, this.city, this.country, this.sector, this.website, this.userId)
     .subscribe(res => {
-      console.log(res);
-    })
+
+      if(res.message){
+        let toast = this.toastCtrl.create({
+          message: res.message,
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      }
+      if(res.error){
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: res.error,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    });
+
+    this.name = '';
+    this.address = '';
+    this.city = '';
+    this.sector = '';
+    this.website = '';
+    this.country = '';
   }
 }
