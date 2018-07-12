@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterProvider } from '../providers/register/register';
+import { CompanyProvider } from '../providers/company/company';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RegisterProvider } from '../providers/register/register';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegisterProvider
+    RegisterProvider,
+    CompanyProvider
   ]
 })
 export class AppModule {}
