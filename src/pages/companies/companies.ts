@@ -16,6 +16,8 @@ import { CompanyProvider } from '../../providers/company/company';
 })
 export class CompaniesPage {
 
+  companies = [];
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -30,6 +32,7 @@ export class CompaniesPage {
     this.company.getCompanies()
       .subscribe(res => {
         console.log(res);
+        this.companies = res.result;
       })
   }
 
