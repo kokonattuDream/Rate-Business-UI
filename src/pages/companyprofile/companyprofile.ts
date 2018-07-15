@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import * as _ from 'lodash';
 
 
@@ -16,6 +16,7 @@ export class CompanyprofilePage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public alertCtrl: AlertController
   ) {
     this.profile = this.navParams.get("data");
 
@@ -53,6 +54,32 @@ export class CompanyprofilePage {
     } else {
       return _.sum(arr);
     }
+  }
+
+  employeeRegister(profile){
+    let alert = this.alertCtrl.create({
+      title: 'Register as an employee',
+      inputs:[
+        {
+          name:'role',
+          placeholder: 'Add Role'
+        }
+      ],
+      buttons: [
+        {
+          text:'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Add',
+          cssClass: 'alertCss',
+          handler: data =>{
+            console.log(data);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }
