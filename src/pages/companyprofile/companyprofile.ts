@@ -15,21 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CompanyprofilePage {
 
-  culture: number;
-  benefits: number;
-  balance: number;
-  speed: number;
-  overall: number;
-  review: string;
+ 
 
-  companyProfile: any;
-  name: string;
+  profile: any;
+  user: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
   ) {
-    this.companyProfile = this.navParams.get("data");
+    this.profile = this.navParams.get("data");
+
   }
 
   ionViewDidLoad() {

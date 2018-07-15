@@ -55,4 +55,18 @@ export class CompanyProvider {
     return this.http  
       .get('http://localhost:3000/api/companies/all');
   }
+
+  addCompanyReview(companyId, culture, benefits, balance, speed, overall, review, userId): Observable<any>{
+    return this.http  
+      .post('http://localhost:3000/api/company/review', {
+        companyId,
+        culture,
+        benefits,
+        balance,
+        speed,
+        overall,
+        review,
+        userId
+      });
+  }
 }

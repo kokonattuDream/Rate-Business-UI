@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>review</ion-title>
+    <ion-title>{{name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -49,6 +49,6 @@
   </ion-grid>
 
   <ion-item>
-    <button ion-button block>Add Review</button>
+    <button ion-button block (click)="addReview()">Add Review</button>
   </ion-item>
 </ion-content>
