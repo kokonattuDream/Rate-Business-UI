@@ -10,8 +10,6 @@ import * as _ from 'lodash';
 })
 export class CompanyprofilePage {
 
- 
-
   profile: any;
   user: any;
 
@@ -28,6 +26,10 @@ export class CompanyprofilePage {
 
   reviewPage(profile){
     this.navCtrl.push("ReviewPage", {"data": profile});
+  }
+
+  viewReviews(profile){
+    this.navCtrl.push("ViewreviewsPage", {"companyData": profile});
   }
 
   averageRating(arr){
