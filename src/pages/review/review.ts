@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { CompanyProvider } from '../../providers/company/company';
 
 
@@ -25,7 +25,8 @@ export class ReviewPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private company: CompanyProvider) {
+    private company: CompanyProvider,
+    private toastCtrl: ToastController) {
       this.companyProfile = this.navParams.get("data");
       this.name = this.companyProfile.companyname;
   }
@@ -38,8 +39,28 @@ export class ReviewPage {
   addReview(){
     this.company.addCompanyReview(this.companyProfile._id, this.culture, this.benefit, this.balance, this.speed, this.overall, this.review, this.userId)
       .subscribe(res =>{
-        console.log(res);
-      })
+        if(res.message){
+          let toast = this.toastCtrl.create({
+            message: res.message,
+            duration: 3000,
+            position: "bottom"
+          });
+
+          toast.present();
+        }
+
+        if(res.error){
+          let toast = this.toastCtrl.create({
+            message: res.error,
+            duration: 3000,
+            position: "bottom"
+          });
+
+          toast.present();
+        }
+      });
+
+      this.review = ''
   }
 
   getData(){
