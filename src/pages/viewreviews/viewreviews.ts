@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import * as _ from 'lodash';
-
+import moment from 'moment';
 
 
 @IonicPage()
@@ -33,7 +33,9 @@ export class ViewreviewsPage {
     }
   }
 
-
+  GetReviewTime(time: number){
+    return moment(time).fromNow();
+  }
 
   showAlert(rating){
     let alert = this.alertCtrl.create({
