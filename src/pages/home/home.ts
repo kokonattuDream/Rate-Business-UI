@@ -1,12 +1,6 @@
+import { CompanyProvider } from './../../providers/company/company';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,16 +9,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private company: CompanyProvider
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    this.company.getUserData()
+      .subscribe(res => {
+        console.log(res.user)
+        this.user = res.user;
+      });
   }
- 
+
   reviewPage(){
     this.navCtrl.push("ReviewPage");
   }
-  
 
+  goToSearch(){
+    this.navCtrl.push("SearchPage");
+  }
+
+  addCompany(){
+    this.navCtrl.push("CreatecompanyPage");
+  }
 }

@@ -33,7 +33,10 @@ export class CompanyprofilePage {
   }
 
   averageRating(arr){
-
+    if(arr === undefined){
+      return 0;
+    }
+    
     if(arr.length <= 0){
       return arr.length;
     } else {
@@ -42,6 +45,9 @@ export class CompanyprofilePage {
   }
 
   ratingSum(arr){
+    if(arr === undefined){
+      return 0;
+    }
     if(arr.length <= 0){
       return arr.length;
     } else {

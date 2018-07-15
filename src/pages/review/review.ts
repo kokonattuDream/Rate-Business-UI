@@ -32,7 +32,6 @@ export class ReviewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReviewPage');
     this.getData();
   }
 
