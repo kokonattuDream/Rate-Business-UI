@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as _ from 'lodash';
 
-/**
- * Generated class for the CompanyprofilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -29,11 +24,27 @@ export class CompanyprofilePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompanyprofilePage');
   }
 
   reviewPage(profile){
     this.navCtrl.push("ReviewPage", {"data": profile});
+  }
+
+  averageRating(arr){
+
+    if(arr.length <= 0){
+      return arr.length;
+    } else {
+      return _.mean(arr);
+    }
+  }
+
+  ratingSum(arr){
+    if(arr.length <= 0){
+      return arr.length;
+    } else {
+      return _.sum(arr);
+    }
   }
 
 }
