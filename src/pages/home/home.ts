@@ -21,7 +21,10 @@ export class HomePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
-
+ 
+  reviewPage(){
+    this.navCtrl.push("ReviewPage");
+  }
   
 
 }
