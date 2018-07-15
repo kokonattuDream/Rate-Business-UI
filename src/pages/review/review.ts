@@ -16,9 +16,15 @@ export class ReviewPage {
   overall: number;
   review: string;
 
+  companyProfile: any;
+  name: string;
+
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams) {
+      this.companyProfile = this.navParams.get("data");
+      this.name = this.companyProfile.companyname;
   }
 
   ionViewDidLoad() {

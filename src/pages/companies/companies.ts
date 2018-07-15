@@ -36,4 +36,8 @@ export class CompaniesPage {
       })
   }
 
+  companyProfile(company){
+    this.navCtrl.push("CompanyprofilePage", {"data": company});
+  }
+
 }
