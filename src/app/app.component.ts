@@ -60,7 +60,10 @@ export class MyApp {
     } else {
       this.nav.push(page.component);
     }
-   
+  }
+
+  settings(){
+    this.nav.push("SettingsPage");
   }
 
   logout(){
