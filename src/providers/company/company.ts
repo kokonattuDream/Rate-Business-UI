@@ -69,4 +69,13 @@ export class CompanyProvider {
         userId
       });
   }
+
+  registerEmployee(company, user, role): Observable<any>{
+    return this.http
+      .post('http://localhost:3000/api/register/employee', {
+        company: company,
+        user: user,
+        role: role
+      });
+  }
 }

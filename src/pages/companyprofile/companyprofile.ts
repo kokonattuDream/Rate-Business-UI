@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import * as _ from 'lodash';
+import { CompanyProvider } from '../../providers/company/company';
 
 
 @IonicPage()
@@ -16,13 +17,18 @@ export class CompanyprofilePage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private company: CompanyProvider
   ) {
     this.profile = this.navParams.get("data");
 
   }
 
   ionViewDidLoad() {
+    this.company.getUserData()
+      .subscribe(res => {
+        this.user = res.user;
+      });
   }
 
   reviewPage(profile){
@@ -74,7 +80,10 @@ export class CompanyprofilePage {
           text: 'Add',
           cssClass: 'alertCss',
           handler: data =>{
-            console.log(data);
+            this.company.registerEmployee(profile, this.user, data.role)
+              .subscribe(res=>{
+                console.log(res);
+              });
           }
         }
       ]
