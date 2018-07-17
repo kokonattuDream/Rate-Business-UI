@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import * as _ from 'lodash';
 import { CompanyProvider } from '../../providers/company/company';
 
@@ -18,7 +18,8 @@ export class CompanyprofilePage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    private company: CompanyProvider
+    private company: CompanyProvider,
+    private toastCtrl: ToastController
   ) {
     this.profile = this.navParams.get("data");
 
@@ -82,7 +83,14 @@ export class CompanyprofilePage {
           handler: data =>{
             this.company.registerEmployee(profile, this.user, data.role)
               .subscribe(res=>{
-                console.log(res);
+                if(res.message){
+                  let toast = this.toastCtrl.create({
+                    message: res.message,
+                    duration: 3000,
+                    position: "bottom"
+                  });
+                  toast.present();
+                }
               });
           }
         }
