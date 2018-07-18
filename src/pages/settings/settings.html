@@ -15,19 +15,27 @@
         <img src="http://placehold.it/10x10">
       </ion-avatar>
       <p>Account</p>
-      <p *ngIf="user">{{user.fullname}}</p>
+      <p class="name" *ngIf="user">{{user.fullname}}</p>
 
       <button ion-button item-end>Add Image</button>
     </ion-list-header>
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf="user">
+
     <ion-list-header>Companies</ion-list-header>
 
-    <ion-label>
-      Company name
-    </ion-label>
+    <ion-item *ngFor="let usercompany of user.companies">
 
-    <button ion-button item-end>Add Logo</button>
+      <ion-avatar item-start>
+        <img src="http://placehold.it/10x10">
+      </ion-avatar>
+
+      <ion-label>
+        {{usercompany.company.companyname}}
+      </ion-label>
+
+      <button ion-button item-end>Add Logo</button>
+    </ion-item>
   </ion-list>
 </ion-content>
