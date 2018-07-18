@@ -9,6 +9,8 @@ import { CompanyProvider } from '../../providers/company/company';
 })
 export class SettingsPage {
 
+  user: any;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -16,9 +18,13 @@ export class SettingsPage {
   }
 
   ionViewDidLoad() {
+    
+  }
+
+  ionViewDidEnter(){
     this.company.getUserData()
       .subscribe(res => {
-        console.log(res);
+        this.user = res.user;
       });
   }
 
