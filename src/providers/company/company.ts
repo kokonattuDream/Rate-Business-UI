@@ -94,4 +94,11 @@ export class CompanyProvider {
         image: image
       }); 
   }
+
+  searchCompany(company): Observable<any>{
+    return this.http
+      .post('http://localhost:3000/api/search-company',{
+        company: company
+      }); 
+  }
 }

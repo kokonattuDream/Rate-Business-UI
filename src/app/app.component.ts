@@ -29,7 +29,7 @@ export class MyApp implements AfterViewInit {
       {title: 'Home', component: 'HomePage', icon: 'home'},
       {title: 'Create Company', component: 'CreatecompanyPage', icon: 'create'},
       {title: 'Companies', component: 'CompaniesPage', icon: 'list-box'},
-      {title: 'Search', component: 'HomePage', icon: 'search'},
+      {title: 'Search', component: 'SearchPage', icon: 'search'},
       {title: 'Leaderboard', component: 'HomePage', icon: 'archive'}
     ];
 
