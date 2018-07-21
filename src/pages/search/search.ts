@@ -35,6 +35,7 @@ export class SearchPage {
   }
 
   searchCompany(){
+    this.showList = true;
     this.company.searchCompany(this.companyname)
       .subscribe(res => {
         if(res.results.length > 0){
@@ -52,10 +53,16 @@ export class SearchPage {
   }
 
   onCancel(event){
-
+    this.showList = false;
   }
 
   onClear(event){
+    this.showList = false;
+  }
 
+  companyProfile(company){
+    this.showList = false;
+    this.companyname = '';
+    this.navCtrl.push("CompanyprofilePage", {data: company});
   }
 }

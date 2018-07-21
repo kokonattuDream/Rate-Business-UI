@@ -17,10 +17,10 @@
 
   </ion-searchbar>
 
-  <ion-list>
+  <ion-list *ngIf="showList">
     <ion-item *ngFor="let company of searchResults">
       <h2>
-        <button ion-item *ngIf="results && showResults.length > 0">
+        <button ion-item *ngIf="results && showResults.length > 0" (click)="companyProfile(company)">
           {{company.companyname}}
         </button>
       </h2>
