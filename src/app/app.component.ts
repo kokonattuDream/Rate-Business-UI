@@ -1,24 +1,26 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { CompanyProvider } from '../providers/company/company';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp implements AfterViewInit {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: string;
-
+  user: any;
   pages: any[];
 
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private storage: Storage
+    private storage: Storage,
+    private company: CompanyProvider
   ) {
     this.initializeApp();
 
@@ -31,6 +33,9 @@ export class MyApp {
       {title: 'Leaderboard', component: 'HomePage', icon: 'archive'}
     ];
 
+  }
+
+  ngAfterViewInit(){
   }
 
   initializeApp() {
@@ -46,6 +51,10 @@ export class MyApp {
         }
 
         if(loggedIn !== null){
+          this.company.getUserData()
+            .subscribe(res =>{
+              this.user = res.user;
+            });
           this.nav.setRoot("HomePage");
         }
       })

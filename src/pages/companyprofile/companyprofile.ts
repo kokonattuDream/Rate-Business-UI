@@ -48,8 +48,14 @@ export class CompanyprofilePage {
     if(arr.length <= 0){
       return arr.length;
     } else {
-      return _.mean(arr);
+      return this.roundValue(_.mean(arr));
     }
+  }
+
+  roundValue(value){
+    const factor = Math.pow(10, 1);
+
+    return Math.round(value * factor) / factor;
   }
 
   ratingSum(arr){

@@ -54,4 +54,27 @@ export class SettingsPage {
     }));
   }
 
+  addLogo(name){
+    const options: CameraOptions = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: false,
+      correctOrientation: true,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 300,
+      targetHeight: 300
+    }
+
+    this.camera.getPicture(options).then((imgUrl => {
+      this.imagePath='data:image/jpeg;base64,' + imgUrl;
+      
+      this.company.uploadLogo(name._id, this.imagePath)
+        .subscribe(res=>{
+          
+        });
+    }));
+  }
+
 }

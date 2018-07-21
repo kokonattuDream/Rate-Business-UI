@@ -45,6 +45,12 @@ export class CompaniesPage {
       this.rating = _.mean(number);
     }
 
-    return this.rating;
+    return this.roundValue(this.rating);
+  }
+
+  roundValue(value){
+    const factor = Math.pow(10, 1);
+
+    return Math.round(value * factor) / factor;
   }
 }

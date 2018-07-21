@@ -12,7 +12,7 @@
   <ion-list>
     <ion-list-header>
       <ion-avatar item-start>
-        <img src="http://placehold.it/10x10">
+        <img *ngIf="user.imageId" src="http://res.cloudinary.com/companyrating/image/upload/v{{user.imageVersion}}/user.imageId}}">
       </ion-avatar>
       <p>Account</p>
       <p class="name" *ngIf="user">{{user.fullname}}</p>
@@ -28,14 +28,14 @@
     <ion-item *ngFor="let usercompany of user.companies">
 
       <ion-avatar item-start>
-        <img src="http://placehold.it/10x10">
+        <img src="http://res.cloudinary.com/companyrating/image/upload/v{{usercompany.company.imageVersion}}/{{usercompany.company.imageId}}">
       </ion-avatar>
 
       <ion-label class="name">
         {{usercompany.company.companyname}}
       </ion-label>
 
-      <button ion-button item-end>Add Logo</button>
+      <button ion-button item-end (click)="addLogo(usercompany.company)">Add Logo</button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -86,4 +86,12 @@ export class CompanyProvider {
         image: image
       });
   }
+
+  uploadLogo(id, image): Observable<any>{
+    return this.http
+      .post('http://localhost:3000/api/v1/company/upload',{
+        company: id,
+        image: image
+      }); 
+  }
 }
