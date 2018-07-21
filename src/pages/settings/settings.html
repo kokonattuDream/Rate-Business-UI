@@ -12,9 +12,9 @@
   <ion-list>
     <ion-list-header>
       <ion-avatar item-start>
-        <img *ngIf="user.imageId" src="http://res.cloudinary.com/companyrating/image/upload/v{{user.imageVersion}}/user.imageId}}">
+        <img *ngIf="user" src="http://res.cloudinary.com/companyrating/image/upload/v{{user.imageVersion}}/user.imageId}}">
       </ion-avatar>
-      <p>Account</p>
+      <p class="account">Account</p>
       <p class="name" *ngIf="user">{{user.fullname}}</p>
 
       <button ion-button item-end (click)="addImage()">Add Image</button>

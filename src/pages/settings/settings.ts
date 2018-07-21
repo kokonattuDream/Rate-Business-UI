@@ -27,6 +27,7 @@ export class SettingsPage {
   ionViewDidEnter(){
     this.company.getUserData()
       .subscribe(res => {
+        console.log(res)
         this.user = res.user;
       });
   }
@@ -41,17 +42,17 @@ export class SettingsPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       targetWidth: 300,
-      targetHeight: 300
+      targetHeight: 300,
     }
 
-    this.camera.getPicture(options).then((imgUrl => {
-      this.imagePath='data:image/jpeg;base64,' + imgUrl;
-      
+    this.camera.getPicture(options).then((imgUrl) => {
+      this.imagePath = 'data:image/jpeg;base64,' + imgUrl
+
       this.company.uploadImage(this.user, this.imagePath)
-        .subscribe(res=>{
-          
+        .subscribe(res => {
+          console.log(res)
         });
-    }));
+    })
   }
 
   addLogo(name){
@@ -72,7 +73,7 @@ export class SettingsPage {
       
       this.company.uploadLogo(name._id, this.imagePath)
         .subscribe(res=>{
-          
+          console.log(res)
         });
     }));
   }

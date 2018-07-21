@@ -11,7 +11,7 @@ import { CompanyProvider } from '../../providers/company/company';
 export class ReviewPage {
 
   culture: number;
-  benefit: number;
+  benefits: number;
   balance: number;
   speed: number;
   overall: number;
@@ -28,7 +28,13 @@ export class ReviewPage {
     private company: CompanyProvider,
     private toastCtrl: ToastController) {
       this.companyProfile = this.navParams.get("data");
-      this.name = this.companyProfile.companyname;
+
+      if(!this.companyProfile){
+        this.navCtrl.setRoot("HomePage");
+      } else {
+        this.name = this.companyProfile.companyname;
+      }
+      
   }
 
   ionViewDidLoad() {
@@ -36,7 +42,7 @@ export class ReviewPage {
   }
 
   addReview(){
-    this.company.addCompanyReview(this.companyProfile._id, this.culture, this.benefit, this.balance, this.speed, this.overall, this.review, this.userId)
+    this.company.addCompanyReview(this.companyProfile._id, this.culture, this.benefits, this.balance, this.speed, this.overall, this.review, this.userId)
       .subscribe(res =>{
         if(res.message){
           let toast = this.toastCtrl.create({
