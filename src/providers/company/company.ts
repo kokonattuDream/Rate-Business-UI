@@ -78,4 +78,12 @@ export class CompanyProvider {
         role: role
       });
   }
+
+  uploadImage(userId, image): Observable<any>{
+    return this.http
+      .post('http://localhost:3000/api/v1/profile/upload',{
+        userId: userId,
+        image: image
+      });
+  }
 }

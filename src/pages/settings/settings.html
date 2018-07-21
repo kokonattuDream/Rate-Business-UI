@@ -17,13 +17,13 @@
       <p>Account</p>
       <p class="name" *ngIf="user">{{user.fullname}}</p>
 
-      <button ion-button item-end>Add Image</button>
+      <button ion-button item-end (click)="addImage()">Add Image</button>
     </ion-list-header>
   </ion-list>
 
   <ion-list *ngIf="user">
 
-    <ion-list-header>Companies</ion-list-header>
+    <ion-list-header class="account">Companies</ion-list-header>
 
     <ion-item *ngFor="let usercompany of user.companies">
 
@@ -31,7 +31,7 @@
         <img src="http://placehold.it/10x10">
       </ion-avatar>
 
-      <ion-label>
+      <ion-label class="name">
         {{usercompany.company.companyname}}
       </ion-label>
 

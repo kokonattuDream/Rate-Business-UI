@@ -1,0 +1,6 @@
+companyrating
+
+334986354856358
+pao8wQZqgyyYsZBnEQyiAJXXANQ
+	
+CLOUDINARY_URL=cloudinary://334986354856358:pao8wQZqgyyYsZBnEQyiAJXXANQ@companyratingCLOUDINARY_URL=cloudi

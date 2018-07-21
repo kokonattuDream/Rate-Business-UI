@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CompanyProvider } from '../../providers/company/company';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,10 @@ export class SettingsPage {
       .subscribe(res => {
         this.user = res.user;
       });
+  }
+
+  addImage(){
+
   }
 
 }
