@@ -26,10 +26,10 @@ export class SettingsPage {
 
   ionViewDidEnter(){
     this.company.getUserData()
-      .subscribe(res => {
-        console.log(res)
-        this.user = res.user;
-      });
+    .subscribe(res => {
+      console.log(res.user)
+      this.user = res.user;
+    });
   }
 
   addImage(){
@@ -52,7 +52,7 @@ export class SettingsPage {
         .subscribe(res => {
           console.log(res)
         });
-    })
+    });
   }
 
   addLogo(name){
