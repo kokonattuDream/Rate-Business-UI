@@ -56,6 +56,21 @@ Features:
 
 ![](https://github.com/kokonattuDream/RateBusinessUI/blob/master/image/reviews.png)
 
-Backend API of this app.
 
+
+
+
+How to Start?
+
+
+Follow the instruction to set up backend API.
 https://github.com/kokonattuDream/RateBusiness
+
+Run in ionic lab
+-> ionic serve --lab -c
+
+Run in ios
+-> ionic cordova run ios
+
+Run in Android
+-> ionic cordova run android
